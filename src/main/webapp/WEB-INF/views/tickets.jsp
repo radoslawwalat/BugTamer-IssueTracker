@@ -33,7 +33,16 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
-                <h1 class="h3 mb-2 text-gray-800">Projects</h1>
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-2 text-gray-800">Projects</h1>
+                    <a href="/tickets/add" class="btn btn-primary btn-icon-split btn-lg">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-flag"></i>
+                                        </span>
+                        <span class="text">Add Ticket</span>
+                    </a>
+
+                </div>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -63,14 +72,14 @@
                                         <td>${ticket.title}</td>
                                         <td> ${ticket.title}</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-icon-split">
+                                            <a href="/tickets/details/${ticket.id}" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-info-circle"></i>
                                             </span>
                                                 <span class="text">Details</span>
                                             </a>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-icon-split">
+                                            <a href="/tickets/delete/${ticket.id}" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>

@@ -16,6 +16,18 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private List<Ticket> tickets;
 
+    @ManyToMany(mappedBy = "projects")
+    private List<Admin> admins;
+
+
+    public List<Admin> getAdmins() {
+        return admins;
+    }
+
+    public void setAdmins(List<Admin> admins) {
+        this.admins = admins;
+    }
+
     public Long getId() {
         return id;
     }

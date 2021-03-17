@@ -22,6 +22,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<c:url value="/resources/css/sb-admin-2.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/vendor/datatables/dataTables.bootstrap4.min.css"/>" rel="stylesheet">
 
 </head>
 
@@ -61,15 +62,15 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Your Projects</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">This Project's Tickets</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Project Name</th>
-                                    <th>Description</th>
+                                    <th>Ticket Name</th>
+                                    <th>Ticket Description</th>
                                     <th>Actions</th>
 
                                 </tr>
@@ -77,7 +78,7 @@
                                 <tfoot>
                                 <tr>
                                     <th>Ticket Name</th>
-                                    <th>Description</th>
+                                    <th>Ticket Description</th>
                                     <th>Actions</th>
                                 </tr>
                                 </tfoot>
@@ -87,25 +88,52 @@
                                         <td>${ticket.title}</td>
                                         <td> ${ticket.description}</td>
                                         <td>
-                                            <a href="/projects/details/${ticket.id}" class="btn btn-info btn-icon-split">
+                                            <a href="/tickets/details/${ticket.id}" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-info-circle"></i>
                                             </span>
                                                 <span class="text">Details</span>
                                             </a>
-                                            <a href="#" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                                <span class="text">Menage Users</span>
-                                            </a>
-                                            <a href="#" class="btn btn-danger btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-trash"></i>
-                                        </span>
-                                                <span class="text">Delete Plan</span>
-                                            </a>
                                         </td>
+
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <%--db2--%>
+            <div class="container-fluid">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Assigned Personel</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <c:forEach items="${project.admins}" var="admin">
+                                    <tr>
+                                        <td>${admin.username}</td>
+                                        <td>${admin.email}</td>
+                                        <td>${admin.role.name}</td>
 
                                     </tr>
                                 </c:forEach>
@@ -116,9 +144,11 @@
                 </div>
 
             </div>
+
             <!-- /.container-fluid -->
 
-        </div>
+
+
         <!-- End of Main Content -->
 
         <!-- Footer -->
@@ -171,6 +201,14 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<c:url value="/resources/js/sb-admin-2.min.js"/>"></script>
+
+
+        <!-- Page level plugins -->
+        <script src="<c:url value="/resources/vendor/datatables/jquery.dataTables.min.js"/>"></script>
+        <script src="<c:url value="/resources/vendor/datatables/dataTables.bootstrap4.min.js"/>"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="<c:url value="/resources/js/demo/datatables-demo.js"/>"> </script>
 
 </body>
 

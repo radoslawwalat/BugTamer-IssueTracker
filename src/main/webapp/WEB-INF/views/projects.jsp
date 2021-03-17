@@ -33,6 +33,7 @@
             <div class="container-fluid">
 
                 <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-2 text-gray-800">Projects</h1>
                 <a href="/projects/add" class="btn btn-primary btn-icon-split btn-lg">
                                         <span class="icon text-white-50">
@@ -40,6 +41,7 @@
                                         </span>
                     <span class="text">Add Project</span>
                 </a>
+                </div>
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">

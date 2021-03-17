@@ -2,3 +2,7 @@
 $(document).ready(function() {
   $('#dataTable').DataTable();
 });
+
+$(document).ready(function() {
+  $('table.display').DataTable();
+} );
