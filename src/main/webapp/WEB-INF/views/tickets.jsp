@@ -34,7 +34,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-2 text-gray-800">Projects</h1>
+                    <h1 class="h3 mb-2 text-gray-800">Tickets</h1>
                     <a href="/tickets/add" class="btn btn-primary btn-icon-split btn-lg">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-flag"></i>
@@ -46,14 +46,14 @@
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Your Projects</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Your Tickets</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                 <tr>
-                                    <th>Project Name</th>
+                                    <th>Ticket Name</th>
                                     <th>Description</th>
                                     <th>Actions</th>
 
@@ -61,7 +61,7 @@
                                 </thead>
                                 <tfoot>
                                 <tr>
-                                    <th>Project Name</th>
+                                    <th>Ticket Name</th>
                                     <th>Ticket Name</th>
                                     <th>Actions</th>
                                 </tr>
