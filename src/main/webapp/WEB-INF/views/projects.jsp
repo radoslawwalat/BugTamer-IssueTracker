@@ -83,7 +83,7 @@
                                         </span>
                                                 <span class="text">Menage Users</span>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-icon-split">
+                                            <a href="/projects/delete/${project.id}" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>

@@ -47,8 +47,8 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">User Roles</a>
-                <a class="collapse-item" href="utilities-border.html">User Projects</a>
+                <a class="collapse-item" href="/manage/roles">User Roles</a>
+                <a class="collapse-item" href="/manage/projects">User Projects</a>
             </div>
         </div>
     </li>

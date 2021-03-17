@@ -49,4 +49,10 @@ public class ProjectController {
 
         return "projectDetails";
     }
+
+    @GetMapping("/projects/delete/{id}")
+    private String deleteProject(@PathVariable long id){
+        projectRepository.deleteById(id);
+        return "redirect:/projects";
+    }
 }

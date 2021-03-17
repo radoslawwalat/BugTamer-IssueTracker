@@ -61,7 +61,8 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        ${ticket.title}<br>
+                                        <div class="col"><h6 class="m-0 font-weight-bold text-primary">Title</h6>${ticket.title}</div>
+
                                         ${ticket.created}<br>
                                         ${ticket.description}<br>
                                         ${ticket.updated}<br>
@@ -69,7 +70,7 @@
 
                                     </div>
                                     <div class="col-lg-6">
-                                        ${ticket.priority.name}<br>
+                                        <div class="col"><h6 class="m-0 font-weight-bold text-primary">Priority</h6>${ticket.priority.name}</div>
                                         ${ticket.project.name}<br>
                                         ${ticket.status.name}<br>
                                         ${ticket.type.name}<br>

@@ -11,7 +11,6 @@ import pl.radoslawwalat.demo.repository.AdminRepository;
 import pl.radoslawwalat.demo.repository.RoleRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -30,7 +29,7 @@ public class AdminController {
         return roleRepository.findAll();
     }
 
-    @GetMapping("/roles")
+    @GetMapping("/manage/roles")
     public String roles(Model model){
 
         model.addAttribute("admins", adminRepository.findAll());
@@ -38,13 +37,13 @@ public class AdminController {
 
         return "roles";
     }
-    @PostMapping("/roles")
+    @PostMapping("/manage/roles")
     public String rolesAdd(Admin admin){
 
         Admin adminToSave = adminRepository.findById(admin.getId()).get();
         adminToSave.setRole(admin.getRole());
         adminRepository.save(adminToSave);
 
-        return "redirect:/roles";
+        return "redirect:/manage/roles";
     }
 }
