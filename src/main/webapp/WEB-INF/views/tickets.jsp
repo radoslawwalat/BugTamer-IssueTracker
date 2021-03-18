@@ -62,7 +62,7 @@
                                 <tfoot>
                                 <tr>
                                     <th>Ticket Name</th>
-                                    <th>Ticket Name</th>
+                                    <th>Description</th>
                                     <th>Actions</th>
                                 </tr>
                                 </tfoot>
@@ -70,7 +70,7 @@
                                 <c:forEach items="${tickets}" var="ticket">
                                     <tr>
                                         <td>${ticket.title}</td>
-                                        <td> ${ticket.title}</td>
+                                        <td> ${ticket.description}</td>
                                         <td>
                                             <a href="/tickets/details/${ticket.id}" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">

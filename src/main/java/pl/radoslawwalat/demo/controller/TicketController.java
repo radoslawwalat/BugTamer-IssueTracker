@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import pl.radoslawwalat.demo.model.Comment;
 import pl.radoslawwalat.demo.model.Ticket;
 import pl.radoslawwalat.demo.repository.*;
 
@@ -47,8 +48,9 @@ public class TicketController {
         model.addAttribute("ticket", new Ticket());
         return "ticketform";
     }
+
     @PostMapping("/tickets/add")
-    private String performAddTicket(Ticket ticket){
+    private String updateTicket(Ticket ticket){
 
         ticket.setCreated(LocalDateTime.now());
         ticketRepository.save(ticket);
@@ -59,6 +61,7 @@ public class TicketController {
     @GetMapping("/tickets/details/{id}")
     private String showTicketDetails(@PathVariable long id, Model model){
 
+        model.addAttribute("comment", new Comment());
         model.addAttribute("ticket", ticketRepository.findById(id).get());
         return "ticketDetails";
     }
@@ -68,5 +71,18 @@ public class TicketController {
         ticketRepository.deleteById(id);
         return "redirect:/tickets";
     }
+
+    @GetMapping("/tickets/edit/{id}")
+    public String editTicket(@PathVariable long id, Model model) {
+
+        model.addAttribute("priorities", priorityRepository.findAll());
+        model.addAttribute("types", typeRepository.findAll());
+        model.addAttribute("projects", projectRepository.findAll());
+        model.addAttribute("statuses", statusRepository.findAll());
+        model.addAttribute("ticket", ticketRepository.findById(id).get());
+        return "ticketEdit";
+    }
+
+
 
 }

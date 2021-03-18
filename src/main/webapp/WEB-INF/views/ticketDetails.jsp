@@ -55,8 +55,15 @@
 
                         <!-- Basic Card Example -->
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3">
+                            <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
                                 <h6 class="m-0 font-weight-bold text-primary">Ticket Details</h6>
+
+                                <a href="/tickets/edit/${ticket.id}" class="btn btn-primary btn-icon-split btn">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-flag"></i>
+                                        </span>
+                                    <span class="text">Edit Ticket</span>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -83,12 +90,14 @@
                     </div>
 
                     <div class="col-lg-6">
+                        <form:form action="/addcomment/${ticket.id}" modelAttribute="comment" method="post">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <form:input path="message" type="text" class="form-control" placeholder="Add comment" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">Button</button>
+                                <button class="btn btn-outline-secondary" type="submit">Add</button>
                             </div>
                         </div>
+                        </form:form>
                         <!-- Default Card Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
@@ -105,13 +114,6 @@
 
                                         </tr>
                                         </thead>
-                                        <tfoot>
-                                        <tr>
-                                            <th>User</th>
-                                            <th>Message</th>
-                                            <th>Posted</th>
-                                        </tr>
-                                        </tfoot>
                                         <tbody>
                                         <c:forEach items="${ticket.comments}" var="comment">
                                             <tr>

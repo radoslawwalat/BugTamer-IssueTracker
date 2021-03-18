@@ -1,6 +1,7 @@
 package pl.radoslawwalat.demo.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class Comment {
@@ -10,9 +11,13 @@ public class Comment {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(nullable=false)
+    private Ticket ticket;
+
+    @ManyToOne
     private Admin commenter;
     private String message;
-    private String created;
+    private LocalDateTime created;
 
 
     public Long getId() {
@@ -39,11 +44,19 @@ public class Comment {
         this.message = message;
     }
 
-    public String getCreated() {
+    public LocalDateTime getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(LocalDateTime created) {
         this.created = created;
+    }
+
+    public Ticket getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
     }
 }

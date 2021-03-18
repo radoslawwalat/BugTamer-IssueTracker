@@ -33,7 +33,7 @@ public class Ticket {
     private LocalDateTime created;
     private LocalDateTime updated;
 
-    @OneToMany
+    @OneToMany(mappedBy = "ticket")
     private List<Comment> comments;
 
 
