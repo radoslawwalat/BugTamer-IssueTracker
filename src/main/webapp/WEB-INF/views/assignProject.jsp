@@ -30,11 +30,14 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
+
+    <jsp:include page="sidebar.jsp"/>
+
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
-        <div id="content fill">
+        <div id="content">
 
             <jsp:include page="topbar.jsp"/>
 
@@ -43,10 +46,74 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Menage User Roles</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Menage User Projects</h1>
                 </div>
 
-                <h1>sth</h1>
+                <div class="row align-items-center">
+
+                    <div class="col-6 col-md-4">
+
+                        <!-- Basic Card Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Assign User to Projects</h6>
+                            </div>
+                            <div class="card-body">
+<%--                                TODO nie mam pojecia jak polaczyc many to many --%>
+                                <form:form method="post" modelAttribute="admin">
+                                    <div class="form-group">
+                                        <h6 class="m-0 font-weight-bold text-primary">Select User</h6>
+                                        <form:select class="custom-select" size="4" path="id" items="${admins}"
+                                                     itemLabel="username" itemValue="id"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <h6 class="m-0 font-weight-bold text-primary">Select Projects</h6>
+                                        <form:select multiple="true" class="custom-select" size="4" path="projects" items="${projects}"
+                                                     itemLabel="name"/>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                                </form:form>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-8">
+                        <!-- Default Card Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">All Users</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Role</th>
+
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        <c:forEach items="${admins}" var="admin">
+                                            <tr>
+                                                <td>${admin.username}</td>
+                                                <td> ${admin.email}</td>
+                                                <td> ${admin.role.name}</td>
+                                            </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
             <!-- /.container-fluid -->
@@ -55,7 +122,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white align-items-end">
+        <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
                     <span>Copyright &copy; Your Website 2020</span>

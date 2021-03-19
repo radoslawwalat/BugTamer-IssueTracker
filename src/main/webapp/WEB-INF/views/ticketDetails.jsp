@@ -55,8 +55,8 @@
 
                         <!-- Basic Card Example -->
                         <div class="card shadow mb-4">
-                            <div class="card-header py-3 d-sm-flex align-items-center justify-content-between mb-4">
-                                <h6 class="m-0 font-weight-bold text-primary">Ticket Details</h6>
+                            <div class="card-header py-3 d-sm-flex align-items-center justify-content-between">
+                                <h3 class="m-0 font-weight-bold text-primary">Ticket Details</h3>
 
                                 <a href="/tickets/edit/${ticket.id}" class="btn btn-primary btn-icon-split btn">
                                         <span class="icon text-white-50">
@@ -68,19 +68,51 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="col"><h6 class="m-0 font-weight-bold text-primary">Title</h6>${ticket.title}</div>
-
-                                        ${ticket.created}<br>
-                                        ${ticket.description}<br>
-                                        ${ticket.updated}<br>
-                                        ${ticket.submitter.username}<br>
-
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Title</h4>${ticket.title}</div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="col"><h6 class="m-0 font-weight-bold text-primary">Priority</h6>${ticket.priority.name}</div>
-                                        ${ticket.project.name}<br>
-                                        ${ticket.status.name}<br>
-                                        ${ticket.type.name}<br>
+
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Description</h4>${ticket.description}</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">AssignedDev</h4>${ticket.submitter.username}</div>
+                                    </div>
+                                    <div class="col-lg-6">
+
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Submitter</h4>${ticket.submitter.username}</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Project</h4>${ticket.project.name}</div>
+                                    </div>
+                                    <div class="col-lg-6">
+
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Ticket Priority</h4>${ticket.priority.name}</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Ticket Status</h4>${ticket.status.name}</div>
+                                    </div>
+                                    <div class="col-lg-6">
+
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Ticket Type</h4>${ticket.type.name}</div>
+                                    </div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Created</h4>${ticket.created}</div>
+                                    </div>
+                                    <div class="col-lg-6">
+
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Updated</h4>${ticket.updated}</div>
                                     </div>
                                 </div>
 
@@ -101,7 +133,7 @@
                         <!-- Default Card Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Comments</h6>
+                                <h3 class="m-0 font-weight-bold text-primary">Comments</h3>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
