@@ -108,6 +108,7 @@
                                 <div class="dropdown-divider"></div>
                                 <div class="row">
                                     <div class="col-lg-6">
+<%--                                        TODO format daty --%>
                                         <div class="col"><h4 class="m-0 font-weight-bold text-primary">Created</h4>${ticket.created}</div>
                                     </div>
                                     <div class="col-lg-6">

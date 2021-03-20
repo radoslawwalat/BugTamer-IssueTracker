@@ -59,12 +59,12 @@
                                 <h6 class="m-0 font-weight-bold text-primary">Assign User to Projects</h6>
                             </div>
                             <div class="card-body">
-<%--                                TODO nie mam pojecia jak polaczyc many to many --%>
+<%--                                TODO zmienić mapowanie z admina na same id i projects za pomocą osobnego obiektu --%>
                                 <form:form method="post" modelAttribute="admin">
                                     <div class="form-group">
                                         <h6 class="m-0 font-weight-bold text-primary">Select User</h6>
                                         <form:select class="custom-select" size="4" path="id" items="${admins}"
-                                                     itemLabel="username" itemValue="id"/>
+                                                     itemLabel="username"/>
                                     </div>
                                     <div class="form-group">
                                         <h6 class="m-0 font-weight-bold text-primary">Select Projects</h6>

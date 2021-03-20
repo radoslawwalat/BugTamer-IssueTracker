@@ -47,7 +47,7 @@ public class ProjectController {
         model.addAttribute("projects", projectRepository.findAll());
 
 
-        return "projectDetails";
+        return "projects/projectDetails";
     }
 
     @GetMapping("/projects/delete/{id}")

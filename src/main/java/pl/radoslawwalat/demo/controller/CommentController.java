@@ -21,17 +21,17 @@ public class CommentController {
         this.ticketRepository = ticketRepository;
     }
 
-    @PostMapping("/addcomment/{id}")
-    public String addComment(@PathVariable long id, Comment comment){
+    @PostMapping("/addcomment/{commentId}")
+    public String addComment(@PathVariable long commentId, Comment comment){
 
-        comment.setTicket(ticketRepository.findById(id).get());
+        comment.setTicket(ticketRepository.findById(commentId).get());
         // TODO set ticket commenter
         comment.setCreated(LocalDateTime.now());
 
-        // TODO nadpisuje jeżeli id jest takie samo FIX
+        // pamietaj zeby zmienna z pathvariable nie nadpisywała jakiegos atrybutu modelu jak sie tak samo nazywa
         commentRepository.save(comment);
 
-        return "redirect:/tickets/details/" + id;
+        return "redirect:/tickets/details/" + commentId;
     }
 
 
