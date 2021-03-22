@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.radoslawwalat.demo.model.Admin;
+import pl.radoslawwalat.demo.model.Project;
 import pl.radoslawwalat.demo.model.Role;
 import pl.radoslawwalat.demo.repository.AdminRepository;
 import pl.radoslawwalat.demo.repository.ProjectRepository;
 import pl.radoslawwalat.demo.repository.RoleRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class AdminController {
@@ -64,7 +66,12 @@ public class AdminController {
     public String assignProjectsUpdate(Admin admin){
 
         Admin adminToSave = adminRepository.findById(admin.getId()).get();
-        adminToSave.setProjects(admin.getProjects());
+        List<Project> projects = adminToSave.getProjects();
+        projects.addAll(admin.getProjects());
+
+        List<Project> deduped = projects.stream().distinct().collect(Collectors.toList());
+        adminToSave.setProjects(deduped);
+
         adminRepository.save(adminToSave);
 
         return "redirect:/projects";

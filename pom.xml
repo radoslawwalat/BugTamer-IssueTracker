@@ -60,7 +60,15 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-envers  EXPERIMENTAL-->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-envers</artifactId>
+            <version>5.4.23.Final</version>
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>

@@ -2,10 +2,10 @@ package pl.radoslawwalat.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Entity
@@ -40,8 +40,5 @@ public class Ticket {
 
     @OneToMany(mappedBy = "ticket")
     private List<Comment> comments;
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
+    
 }
