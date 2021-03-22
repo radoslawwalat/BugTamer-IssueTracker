@@ -2,7 +2,6 @@ package pl.radoslawwalat.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -40,5 +39,8 @@ public class Ticket {
 
     @OneToMany(mappedBy = "ticket")
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "historyticket")
+    private List<History> histories;
     
 }

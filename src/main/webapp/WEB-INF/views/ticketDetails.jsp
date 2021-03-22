@@ -120,6 +120,40 @@
                             </div>
                         </div>
 
+
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h3 class="m-0 font-weight-bold text-primary">History Of Changes</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>User</th>
+                                        <th>Property</th>
+                                        <th>Old Value</th>
+                                        <th>New Value</th>
+                                        <th>Date</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach items="${ticket.histories}" var="history">
+                                        <tr>
+                                            <td>${history.admin.username}</td>
+                                            <td> ${history.property}</td>
+                                            <td> ${history.oldvalue}</td>
+                                            <td> ${history.newvalue}</td>
+                                            <td> ${history.date}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                     </div>
 
                     <div class="col-lg-6">
@@ -138,7 +172,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <table class="table table-bordered display" id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                         <tr>
                                             <th>User</th>
