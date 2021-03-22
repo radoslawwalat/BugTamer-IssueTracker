@@ -18,6 +18,8 @@ public class Ticket {
     private String title;
     private String description;
 
+    private String photo;
+
     @ManyToOne
     private Admin submitter;
 

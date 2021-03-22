@@ -55,6 +55,7 @@ public class TicketController {
 
     private void updateHistory(Ticket ticket){
         Ticket ticketOld = ticketRepository.findById(ticket.getId()).get();
+        boolean updated = false;
 
         if (!ticketOld.getTitle().equals(ticket.getTitle())) {
             History hist = new History();
@@ -66,6 +67,7 @@ public class TicketController {
 //            hist.setAdmin();
             hist.setHistoryticket(ticket);
             historyRepository.save(hist);
+            updated = true;
         }
         if (!ticketOld.getDescription().equals(ticket.getDescription())) {
             History histDesc = new History();
@@ -77,6 +79,7 @@ public class TicketController {
 //            hist.setAdmin();
             histDesc.setHistoryticket(ticket);
             historyRepository.save(histDesc);
+            updated = true;
         }
         if (!ticketOld.getPriority().getId().equals(ticket.getPriority().getId())) {
             History histPrio = new History();
@@ -88,6 +91,7 @@ public class TicketController {
 //            hist.setAdmin();
             histPrio.setHistoryticket(ticket);
             historyRepository.save(histPrio);
+            updated = true;
         }
         if (!ticketOld.getType().getId().equals(ticket.getType().getId())) {
             History histType = new History();
@@ -99,6 +103,7 @@ public class TicketController {
 //            hist.setAdmin();
             histType.setHistoryticket(ticket);
             historyRepository.save(histType);
+            updated = true;
         }
         if (!ticketOld.getProject().getId().equals(ticket.getProject().getId())) {
             History histProj = new History();
@@ -110,6 +115,7 @@ public class TicketController {
 //            hist.setAdmin();
             histProj.setHistoryticket(ticket);
             historyRepository.save(histProj);
+            updated = true;
         }
         if (!ticketOld.getStatus().getId().equals(ticket.getStatus().getId())) {
             History histStatus = new History();
@@ -121,6 +127,11 @@ public class TicketController {
 //            hist.setAdmin();
             histStatus.setHistoryticket(ticket);
             historyRepository.save(histStatus);
+            updated = true;
+        }
+
+        if (updated) {
+            ticket.setUpdated(LocalDateTime.now());
         }
 
 
