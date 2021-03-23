@@ -68,7 +68,7 @@
                                     <div class="form-group">
                                     <h6 class="m-0 font-weight-bold text-primary">Select Role</h6>
                                 <form:select class="custom-select" size="4" path="role.id" items="${roles}"
-                                             itemLabel="name" itemValue="id"/>
+                                             itemLabel="display" itemValue="id"/>
                                     </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
 

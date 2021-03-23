@@ -1,33 +1,33 @@
 package pl.radoslawwalat.demo.controller;
 
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import pl.radoslawwalat.demo.model.Admin;
 import pl.radoslawwalat.demo.model.Project;
 import pl.radoslawwalat.demo.model.Role;
 import pl.radoslawwalat.demo.repository.AdminRepository;
 import pl.radoslawwalat.demo.repository.ProjectRepository;
 import pl.radoslawwalat.demo.repository.RoleRepository;
+import pl.radoslawwalat.demo.service.AdminService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
+@AllArgsConstructor
 public class AdminController {
 
     private AdminRepository adminRepository;
     private RoleRepository roleRepository;
     private ProjectRepository projectRepository;
+    private AdminService adminService;
 
-
-    public AdminController(AdminRepository adminRepository, RoleRepository roleRepository, ProjectRepository projectRepository) {
-        this.adminRepository = adminRepository;
-        this.roleRepository = roleRepository;
-        this.projectRepository = projectRepository;
-    }
 
     @ModelAttribute("roles")
     public List<Role> roles(){
@@ -76,5 +76,17 @@ public class AdminController {
 
         return "redirect:/projects";
 
+    }
+
+    // SECURITY TEST
+
+    @GetMapping("/create-user")
+    @ResponseBody
+    public String createUser() {
+        Admin admin = new Admin();
+        admin.setUsername("admin");
+        admin.setPassword("admin");
+        adminService.saveAdmin(admin);
+        return "admin";
     }
 }
