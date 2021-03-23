@@ -30,13 +30,13 @@
 
 <!-- Page Wrapper -->
 <div id="wrapper">
+    <jsp:include page="sidebar.jsp"/>
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
         <!-- Main Content -->
-        <div id="content fill">
+        <div id="content fill" class="mt-4">
 
-            <jsp:include page="topbar.jsp"/>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
@@ -54,15 +54,7 @@
         </div>
         <!-- End of Main Content -->
 
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white align-items-end">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
-                </div>
-            </div>
-        </footer>
-        <!-- End of Footer -->
+
 
     </div>
     <!-- End of Content Wrapper -->

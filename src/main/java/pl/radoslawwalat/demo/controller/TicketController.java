@@ -134,8 +134,6 @@ public class TicketController {
             ticket.setUpdated(LocalDateTime.now());
         }
 
-
-
     }
 
     @PostMapping("/tickets/add")
@@ -174,7 +172,5 @@ public class TicketController {
         model.addAttribute("ticket", ticketRepository.findById(id).get());
         return "ticketEdit";
     }
-
-
 
 }

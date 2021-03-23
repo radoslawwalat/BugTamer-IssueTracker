@@ -78,6 +78,17 @@ public class AdminController {
 
     }
 
+    @GetMapping("/signup")
+    public String createAdmin(Model model){
+        model.addAttribute("admin", new Admin());
+        return "adminForm";
+    }
+    @PostMapping("/signup")
+    public String performCreateAdmin(Admin admin){
+        adminService.saveAdmin(admin);
+        return "redirect:/login";
+    }
+
     // SECURITY TEST
 
     @GetMapping("/create-user")
@@ -89,4 +100,5 @@ public class AdminController {
         adminService.saveAdmin(admin);
         return "admin";
     }
+
 }
