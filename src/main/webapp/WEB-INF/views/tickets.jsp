@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +55,12 @@
                                 <thead>
                                 <tr>
                                     <th>Ticket Name</th>
-                                    <th>Description</th>
+                                    <th>Project Name</th>
+<%--                                    <th>Developer Assigned</th>--%>
+                                    <th>Ticket Priority</th>
+                                    <th>Ticket Status</th>
+                                    <th>Ticket Type</th>
+                                    <th>Created</th>
                                     <th>Actions</th>
 
                                 </tr>
@@ -62,7 +68,12 @@
                                 <tfoot>
                                 <tr>
                                     <th>Ticket Name</th>
-                                    <th>Description</th>
+                                    <th>Project Name</th>
+<%--                                    <th>Developer Assigned</th>--%>
+                                    <th>Ticket Priority</th>
+                                    <th>Ticket Status</th>
+                                    <th>Ticket Type</th>
+                                    <th>Created</th>
                                     <th>Actions</th>
                                 </tr>
                                 </tfoot>
@@ -70,7 +81,13 @@
                                 <c:forEach items="${tickets}" var="ticket">
                                     <tr>
                                         <td>${ticket.title}</td>
-                                        <td> ${ticket.description}</td>
+                                        <td>${ticket.project.name}</td>
+<%--                                        TODO ASSIGNED DEVELOPER--%>
+                                        <td>${ticket.priority.name}</td>
+                                        <td>${ticket.status.name}</td>
+                                        <td>${ticket.type.name}</td>
+                                        <td>${ticket.createdFormat}</td>
+
                                         <td>
                                             <a href="/tickets/details/${ticket.id}" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50">

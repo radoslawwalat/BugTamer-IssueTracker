@@ -46,8 +46,9 @@
                 <!-- Page Heading -->
                 <h1 class="h3 mb-4 text-gray-800">Add Ticket</h1>
 
-                <form:form method="post" action="/tickets/add" modelAttribute="ticket">
+                <form:form method="post" action="/tickets/update" modelAttribute="ticket">
                     <form:hidden path="id"/>
+                    <form:hidden path="created"/>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Ticket Title</label>
                         <form:input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter title" path="title"/>

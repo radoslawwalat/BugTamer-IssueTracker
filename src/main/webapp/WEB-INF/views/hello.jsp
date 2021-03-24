@@ -43,13 +43,22 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Menage User Roles</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Welcome to my page</h1>
                 </div>
 
                 <h1>sth</h1>
 
+                <!-- correct -->
+
+
             </div>
             <!-- /.container-fluid -->
+            <div class="text-center">
+            <a href="/signup" class="btn btn-primary btn-icon-split btn-lg">
+
+                <span class="text">Create Account!</span>
+            </a>
+            </div>
 
         </div>
         <!-- End of Main Content -->
@@ -81,7 +90,10 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <form action="<c:url value="/logout"/>" method="post">
+                    <input class="btn btn-primary" type="submit" value="Logout">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                </form>
             </div>
         </div>
     </div>

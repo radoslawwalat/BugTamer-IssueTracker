@@ -1,9 +1,15 @@
 package pl.radoslawwalat.demo.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Entity
+@Getter
+@Setter
 public class Comment {
 
     @Id
@@ -19,44 +25,10 @@ public class Comment {
     private String message;
     private LocalDateTime created;
 
+    public String getCreatedFormat() {
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Admin getCommenter() {
-        return commenter;
-    }
-
-    public void setCommenter(Admin commenter) {
-        this.commenter = commenter;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public LocalDateTime getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDateTime created) {
-        this.created = created;
-    }
-
-    public Ticket getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = created.format(formatter);
+        return formatDateTime;
     }
 }

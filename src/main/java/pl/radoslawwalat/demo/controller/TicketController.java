@@ -135,14 +135,24 @@ public class TicketController {
         }
 
     }
+    @PostMapping("/tickets/update")
+    private String updateExistingTicket(Ticket ticket){
+
+
+            updateHistory(ticket);
+            ticket.setUpdated(LocalDateTime.now());
+
+        ticketRepository.save(ticket);
+
+        return "redirect:/tickets";
+    }
 
     @PostMapping("/tickets/add")
     private String updateTicket(Ticket ticket){
 
-        if (ticket.getCreated() == null) {
-            ticket.setCreated(LocalDateTime.now());
-        }
-        updateHistory(ticket);
+
+        ticket.setCreated(LocalDateTime.now());
+
         ticketRepository.save(ticket);
 
         return "redirect:/tickets";

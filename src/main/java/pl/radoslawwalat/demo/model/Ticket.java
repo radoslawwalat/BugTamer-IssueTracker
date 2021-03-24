@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Entity
@@ -44,5 +45,25 @@ public class Ticket {
 
     @OneToMany(mappedBy = "historyticket")
     private List<History> histories;
-    
+
+    public String getCreatedFormat() {
+
+        if (created == null) {
+            return null;
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = created.format(formatter);
+        return formatDateTime;
+    }
+    public String getUpdatedFormat() {
+
+        if (updated == null) {
+            return null;
+        }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formatDateTime = updated.format(formatter);
+        return formatDateTime;
+    }
 }

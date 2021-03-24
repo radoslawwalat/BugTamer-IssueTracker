@@ -55,6 +55,7 @@
 
                 <form:form method="post" modelAttribute="ticket">
                     <div class="form-group">
+                        <form:hidden path="created"/>
                         <label for="exampleInputEmail1">Ticket Title</label>
                         <form:input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter title" path="title"/>
                         <small id="nameHelp" class="form-text text-muted">Losowa wiadomosc</small>

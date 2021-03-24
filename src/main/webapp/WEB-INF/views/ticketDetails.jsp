@@ -109,11 +109,11 @@
                                 <div class="row">
                                     <div class="col-lg-6">
 <%--                                        TODO format daty --%>
-                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Created</h4>${ticket.created}</div>
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Created</h4>${ticket.createdFormat}</div>
                                     </div>
                                     <div class="col-lg-6">
 
-                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Updated</h4>${ticket.updated}</div>
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">Updated</h4>${ticket.updatedFormat}</div>
                                     </div>
                                 </div>
 
@@ -146,7 +146,7 @@
                                             <td> ${history.property}</td>
                                             <td> ${history.oldvalue}</td>
                                             <td> ${history.newvalue}</td>
-                                            <td> ${history.date}</td>
+                                            <td> ${history.dateFormat}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -186,7 +186,7 @@
                                             <tr>
                                                 <td>${comment.commenter.username}</td>
                                                 <td> ${comment.message}</td>
-                                                <td> ${comment.created}</td>
+                                                <td> ${comment.createdFormat}</td>
 
                                             </tr>
                                         </c:forEach>
@@ -199,12 +199,10 @@
                         <!-- Basic Card Example -->
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+                                <h3 class="m-0 font-weight-bold text-primary">Upload File</h3>
                             </div>
                             <div class="card-body">
-                                The styling for this basic card example is created by using default Bootstrap
-                                utility classes. By using utility classes, the style of the card component can be
-                                easily modified with no need for any custom CSS!
+                                UPLOAD FILES (TODO)
                             </div>
                         </div>
 

@@ -46,19 +46,52 @@
 
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-6">
-                <h1 class="h3 mb-2 text-gray-800">Project Name : ${project.name}</h1>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Project Name</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${project.name}</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-lg-6">
-                <h1 class="h3 mb-2 text-gray-800">Project Description : ${project.name}</h1>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Project Description</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">${project.description}</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <a href="/projects/add" class="btn btn-primary btn-icon-split btn-lg">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="/projects/add" class="btn btn-primary btn-icon-split btn-lg">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-flag"></i>
                                         </span>
-                    <span class="text">Add Project</span>
-                </a>
+                        <span class="text">Add Project</span>
+                    </a>
+                    </div>
+
+
+
+                </div>
+
+
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
@@ -152,13 +185,13 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
-                </div>
-            </div>
-        </footer>
+<%--        <footer class="sticky-footer bg-white">--%>
+<%--            <div class="container my-auto">--%>
+<%--                <div class="copyright text-center my-auto">--%>
+<%--                    <span>Copyright &copy; Your Website 2020</span>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </footer>--%>
         <!-- End of Footer -->
 
     </div>

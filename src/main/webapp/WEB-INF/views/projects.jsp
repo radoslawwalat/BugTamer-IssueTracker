@@ -77,12 +77,6 @@
                                             </span>
                                                 <span class="text">Details</span>
                                             </a>
-                                            <a href="#" class="btn btn-secondary btn-icon-split">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-arrow-right"></i>
-                                        </span>
-                                                <span class="text">Menage Users</span>
-                                            </a>
                                             <a href="/projects/delete/${project.id}" class="btn btn-danger btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
