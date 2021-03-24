@@ -2,6 +2,7 @@ package pl.radoslawwalat.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -25,6 +26,9 @@ public class Ticket {
     private Admin submitter;
 
     @ManyToOne
+    private Admin assigned;
+
+    @ManyToOne
     private Project project;  // nazwa projektu
 
     @ManyToOne
@@ -40,10 +44,10 @@ public class Ticket {
     private LocalDateTime created;
     private LocalDateTime updated;
 
-    @OneToMany(mappedBy = "ticket")
+    @OneToMany(mappedBy = "ticket", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "historyticket")
+    @OneToMany(mappedBy = "historyticket", cascade = CascadeType.REMOVE)
     private List<History> histories;
 
     public String getCreatedFormat() {

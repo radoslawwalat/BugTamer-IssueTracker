@@ -1,6 +1,8 @@
 package pl.radoslawwalat.demo.controller;
 
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.radoslawwalat.demo.model.Comment;
 import pl.radoslawwalat.demo.model.History;
-import pl.radoslawwalat.demo.model.Priority;
 import pl.radoslawwalat.demo.model.Ticket;
 import pl.radoslawwalat.demo.repository.*;
 
@@ -24,14 +25,17 @@ public class TicketController {
     private ProjectRepository projectRepository;
     private StatusRepository statusRepository;
     private HistoryRepository historyRepository;
+    private AdminRepository adminRepository;
 
-    public TicketController(TicketRepository ticketRepository, PriorityRepository priorityRepository, TypeRepository typeRepository, ProjectRepository projectRepository, StatusRepository statusRepository, HistoryRepository historyRepository) {
+
+    public TicketController(TicketRepository ticketRepository, PriorityRepository priorityRepository, TypeRepository typeRepository, ProjectRepository projectRepository, StatusRepository statusRepository, HistoryRepository historyRepository, AdminRepository adminRepository) {
         this.ticketRepository = ticketRepository;
         this.priorityRepository = priorityRepository;
         this.typeRepository = typeRepository;
         this.projectRepository = projectRepository;
         this.statusRepository = statusRepository;
         this.historyRepository = historyRepository;
+        this.adminRepository = adminRepository;
     }
 
 
@@ -53,7 +57,7 @@ public class TicketController {
         return "ticketform";
     }
 
-    private void updateHistory(Ticket ticket){
+    private void updateHistory(Ticket ticket ,UserDetails customUser){
         Ticket ticketOld = ticketRepository.findById(ticket.getId()).get();
         boolean updated = false;
 
@@ -63,8 +67,7 @@ public class TicketController {
             hist.setOldvalue(ticketOld.getTitle());
             hist.setNewvalue(ticket.getTitle());
             hist.setDate(LocalDateTime.now());
-            // TODO SET ADMIN HERE
-//            hist.setAdmin();
+            hist.setAdmin(adminRepository.findByUsername(customUser.getUsername()));
             hist.setHistoryticket(ticket);
             historyRepository.save(hist);
             updated = true;
@@ -75,8 +78,7 @@ public class TicketController {
             histDesc.setOldvalue(ticketOld.getDescription());
             histDesc.setNewvalue(ticket.getDescription());
             histDesc.setDate(LocalDateTime.now());
-            // TODO SET ADMIN HERE
-//            hist.setAdmin();
+            histDesc.setAdmin(adminRepository.findByUsername(customUser.getUsername()));
             histDesc.setHistoryticket(ticket);
             historyRepository.save(histDesc);
             updated = true;
@@ -87,8 +89,7 @@ public class TicketController {
             histPrio.setOldvalue(ticketOld.getPriority().getName());
             histPrio.setNewvalue(priorityRepository.findById(ticket.getPriority().getId()).get().getName());
             histPrio.setDate(LocalDateTime.now());
-            // TODO SET ADMIN HERE
-//            hist.setAdmin();
+            histPrio.setAdmin(adminRepository.findByUsername(customUser.getUsername()));
             histPrio.setHistoryticket(ticket);
             historyRepository.save(histPrio);
             updated = true;
@@ -99,8 +100,7 @@ public class TicketController {
             histType.setOldvalue(ticketOld.getType().getName());
             histType.setNewvalue(typeRepository.findById(ticket.getType().getId()).get().getName());
             histType.setDate(LocalDateTime.now());
-            // TODO SET ADMIN HERE
-//            hist.setAdmin();
+            histType.setAdmin(adminRepository.findByUsername(customUser.getUsername()));
             histType.setHistoryticket(ticket);
             historyRepository.save(histType);
             updated = true;
@@ -111,8 +111,7 @@ public class TicketController {
             histProj.setOldvalue(ticketOld.getProject().getName());
             histProj.setNewvalue(projectRepository.findById(ticket.getProject().getId()).get().getName());
             histProj.setDate(LocalDateTime.now());
-            // TODO SET ADMIN HERE
-//            hist.setAdmin();
+            histProj.setAdmin(adminRepository.findByUsername(customUser.getUsername()));
             histProj.setHistoryticket(ticket);
             historyRepository.save(histProj);
             updated = true;
@@ -123,8 +122,7 @@ public class TicketController {
             histStatus.setOldvalue(ticketOld.getStatus().getName());
             histStatus.setNewvalue(statusRepository.findById(ticket.getStatus().getId()).get().getName());
             histStatus.setDate(LocalDateTime.now());
-            // TODO SET ADMIN HERE
-//            hist.setAdmin();
+            histStatus.setAdmin(adminRepository.findByUsername(customUser.getUsername()));
             histStatus.setHistoryticket(ticket);
             historyRepository.save(histStatus);
             updated = true;
@@ -136,22 +134,33 @@ public class TicketController {
 
     }
     @PostMapping("/tickets/update")
-    private String updateExistingTicket(Ticket ticket){
+    private String updateExistingTicket(@AuthenticationPrincipal UserDetails customUser, Ticket ticket){
 
 
-            updateHistory(ticket);
+            updateHistory(ticket, customUser);
             ticket.setUpdated(LocalDateTime.now());
 
         ticketRepository.save(ticket);
 
         return "redirect:/tickets";
     }
+    @GetMapping("/tickets/pickup/{ticketid}")
+    private String assignLoggedToTicket(@AuthenticationPrincipal UserDetails customUser, @PathVariable long ticketid){
+
+        Ticket ticket = ticketRepository.findById(ticketid).get();
+        ticket.setAssigned(adminRepository.findByUsername(customUser.getUsername()));
+
+        ticketRepository.save(ticket);
+
+        return "redirect:/tickets/details/" + ticketid;
+    }
 
     @PostMapping("/tickets/add")
-    private String updateTicket(Ticket ticket){
+    private String updateTicket(@AuthenticationPrincipal UserDetails customUser, Ticket ticket){
 
 
         ticket.setCreated(LocalDateTime.now());
+        ticket.setSubmitter(adminRepository.findByUsername(customUser.getUsername()));
 
         ticketRepository.save(ticket);
 

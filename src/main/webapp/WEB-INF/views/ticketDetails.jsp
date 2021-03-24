@@ -64,6 +64,12 @@
                                         </span>
                                     <span class="text">Edit Ticket</span>
                                 </a>
+                                <a href="/tickets/pickup/${ticket.id}" class="btn btn-primary btn-icon-split btn">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-flag"></i>
+                                        </span>
+                                    <span class="text">Pick Up</span>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -78,7 +84,7 @@
                                 <div class="dropdown-divider"></div>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">AssignedDev</h4>${ticket.submitter.username}</div>
+                                        <div class="col"><h4 class="m-0 font-weight-bold text-primary">AssignedDev</h4>${ticket.assigned.username}</div>
                                     </div>
                                     <div class="col-lg-6">
 
