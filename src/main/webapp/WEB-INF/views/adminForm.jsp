@@ -49,16 +49,21 @@
                                 <div class="mb-3 mb-sm-0">
                                     <form:input type="text" class="form-control form-control-user" id="exampleFirstName" path="username"
                                            placeholder="User Name"/>
+                                    <form:errors path="username" />
                                 </div>
                             </div>
                             <div class="form-group">
+                                <div class="mb-3 mb-sm-0">
                                 <form:input type="email" class="form-control form-control-user" id="exampleInputEmail" path="email"
                                        placeholder="Email Address"/>
+                                <form:errors path="email" />
+                                </div>
                             </div>
                             <div class="form-group">
                                 <div class="mb-3 mb-sm-0">
                                     <form:input type="password" class="form-control form-control-user" path="password"
                                            id="exampleInputPassword" placeholder="Password"/>
+                                    <form:errors path="password" />
                                 </div>
                             </div>
                         <button type="submit" class="btn btn-primary btn-user btn-block">

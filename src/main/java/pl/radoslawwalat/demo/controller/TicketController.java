@@ -5,7 +5,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.radoslawwalat.demo.model.Comment;
@@ -13,6 +15,7 @@ import pl.radoslawwalat.demo.model.History;
 import pl.radoslawwalat.demo.model.Ticket;
 import pl.radoslawwalat.demo.repository.*;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -134,8 +137,10 @@ public class TicketController {
 
     }
     @PostMapping("/tickets/update")
-    private String updateExistingTicket(@AuthenticationPrincipal UserDetails customUser, Ticket ticket){
-
+    private String updateExistingTicket(@AuthenticationPrincipal UserDetails customUser, @Valid @ModelAttribute("ticket")Ticket ticket, BindingResult result){
+        if (result.hasErrors()) {
+            return "ticketEdit";
+        }
 
             updateHistory(ticket, customUser);
             ticket.setUpdated(LocalDateTime.now());
@@ -144,20 +149,13 @@ public class TicketController {
 
         return "redirect:/tickets";
     }
-    @GetMapping("/tickets/pickup/{ticketid}")
-    private String assignLoggedToTicket(@AuthenticationPrincipal UserDetails customUser, @PathVariable long ticketid){
 
-        Ticket ticket = ticketRepository.findById(ticketid).get();
-        ticket.setAssigned(adminRepository.findByUsername(customUser.getUsername()));
-
-        ticketRepository.save(ticket);
-
-        return "redirect:/tickets/details/" + ticketid;
-    }
 
     @PostMapping("/tickets/add")
-    private String updateTicket(@AuthenticationPrincipal UserDetails customUser, Ticket ticket){
-
+    private String updateTicket(@AuthenticationPrincipal UserDetails customUser, @Valid @ModelAttribute("ticket")Ticket ticket, BindingResult result){
+        if (result.hasErrors()) {
+            return "ticketform";
+        }
 
         ticket.setCreated(LocalDateTime.now());
         ticket.setSubmitter(adminRepository.findByUsername(customUser.getUsername()));
@@ -190,6 +188,17 @@ public class TicketController {
         model.addAttribute("statuses", statusRepository.findAll());
         model.addAttribute("ticket", ticketRepository.findById(id).get());
         return "ticketEdit";
+    }
+
+    @GetMapping("/tickets/pickup/{ticketid}")
+    private String assignLoggedToTicket(@AuthenticationPrincipal UserDetails customUser, @PathVariable long ticketid){
+
+        Ticket ticket = ticketRepository.findById(ticketid).get();
+        ticket.setAssigned(adminRepository.findByUsername(customUser.getUsername()));
+
+        ticketRepository.save(ticket);
+
+        return "redirect:/tickets/details/" + ticketid;
     }
 
 }

@@ -3,8 +3,13 @@ package pl.radoslawwalat.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -17,9 +22,15 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 60)
+    @Column(length = 60, unique = true)
+    @Size(min = 3, max = 60, message = "Size between 3 and 60")
+    @NotBlank(message = "Name is mandatory")
     private String username;
+
+    @Email
     private String email;
+
+    @NotBlank(message = "password is mandatory")
     private String password;
 
     @ManyToOne

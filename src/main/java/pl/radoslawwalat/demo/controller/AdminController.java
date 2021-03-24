@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import pl.radoslawwalat.demo.model.Admin;
 import pl.radoslawwalat.demo.model.Project;
 import pl.radoslawwalat.demo.model.Role;
@@ -16,6 +19,7 @@ import pl.radoslawwalat.demo.repository.ProjectRepository;
 import pl.radoslawwalat.demo.repository.RoleRepository;
 import pl.radoslawwalat.demo.service.AdminService;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,6 +31,7 @@ public class AdminController {
     private RoleRepository roleRepository;
     private ProjectRepository projectRepository;
     private AdminService adminService;
+    private Validator validator;
 
 
     @ModelAttribute("roles")
@@ -79,12 +84,19 @@ public class AdminController {
     }
 
     @GetMapping("/signup")
-    public String createAdmin(Model model){
-        model.addAttribute("admin", new Admin());
-        return "adminForm";
+    public ModelAndView createAdmin(ModelAndView modelAndView){
+        modelAndView.addObject("admin", new Admin());
+        modelAndView.setViewName("adminForm");
+        return modelAndView;
     }
+
+    // @ModelAttribute("student") in case
     @PostMapping("/signup")
-    public String performCreateAdmin(Admin admin){
+    public String performCreateAdmin(@Valid @ModelAttribute("admin") Admin admin, BindingResult result){
+        if (result.hasErrors()) {
+            return "adminForm";
+        }
+
         adminService.saveAdmin(admin);
         return "redirect:/login";
     }

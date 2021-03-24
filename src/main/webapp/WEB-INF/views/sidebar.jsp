@@ -23,7 +23,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -46,7 +46,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
+                <h6 class="collapse-header">Manage:</h6>
                 <a class="collapse-item" href="/manage/roles">User Roles</a>
                 <a class="collapse-item" href="/manage/projects">User Projects</a>
             </div>

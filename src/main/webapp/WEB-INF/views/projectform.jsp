@@ -57,11 +57,12 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Project Name</label>
                         <form:input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter name" path="name"/>
-                        <small id="nameHelp" class="form-text text-muted">Losowa wiadomosc</small>
+                        <small id="nameHelp" class="form-text text-muted"><form:errors path="name" /></small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Project Description</label>
                         <form:input  class="form-control" id="exampleInputPassword1" placeholder="description" path="description"/>
+                        <small id="nameHelp" class="form-text text-muted"><form:errors path="description" /></small>
                     </div>
                     <button type="submit" class="btn btn-primary">Add Project</button>
                 </form:form>

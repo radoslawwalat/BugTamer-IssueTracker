@@ -52,11 +52,12 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">Ticket Title</label>
                         <form:input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter title" path="title"/>
-                        <small id="nameHelp" class="form-text text-muted">Losowa wiadomosc</small>
+                        <small id="nameHelp" class="form-text text-muted"><form:errors path="title" /></small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Ticket Description</label>
                         <form:input  class="form-control" id="exampleInputPassword1" placeholder="description" path="description"/>
+                        <small id="nameHelp" class="form-text text-muted"><form:errors path="description" /></small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Select Priority</label>

@@ -81,7 +81,7 @@
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>
-                                                <span class="text">Delete Plan</span>
+                                                <span class="text">Delete Project</span>
                                             </a>
                                         </td>
 
