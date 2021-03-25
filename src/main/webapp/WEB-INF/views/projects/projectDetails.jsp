@@ -166,7 +166,7 @@
                                     <tr>
                                         <td>${admin.username}</td>
                                         <td>${admin.email}</td>
-                                        <td>${admin.role.name}</td>
+                                        <td>${admin.role.display}</td>
 
                                     </tr>
                                 </c:forEach>

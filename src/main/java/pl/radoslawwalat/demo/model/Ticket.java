@@ -24,7 +24,7 @@ public class Ticket {
     private String title;
 
     @NotBlank(message = "Description is mandatory")
-    @Size(min=1, max=50)
+    @Size(min=1, max=250)
     private String description;
 
     private String photo;

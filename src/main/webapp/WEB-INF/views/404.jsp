@@ -1,7 +1,13 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: radek
+  Date: 24/03/2021
+  Time: 21:04
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form"
-           uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Blank</title>
+    <title>SB Admin 2 - 404</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/resources/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -21,7 +27,7 @@
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="<c:url value="/resources/css/sb-admin-2.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/sb-admin-2.min.css"/>" rel="stylesheet">
 
 </head>
 
@@ -43,47 +49,13 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">Add Ticket</h1>
-
-                <form:form method="post" action="/tickets/update" modelAttribute="ticket">
-                    <form:hidden path="id"/>
-                    <form:hidden path="created"/>
-                    <form:hidden path="submitter"/>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Ticket Title</label>
-                        <form:input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter title" path="title"/>
-                        <small id="nameHelp" class="form-text text-muted"><form:errors path="title" /></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Ticket Description</label>
-                        <form:input  class="form-control" id="exampleInputPassword1" placeholder="description" path="description"/>
-                        <small id="nameHelp" class="form-text text-muted"><form:errors path="description" /></small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Select Priority</label>
-                        <form:select class="custom-select" path="priority.id" items="${priorities}"
-                                     itemLabel="name" itemValue="id"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Select Type</label>
-                        <form:select class="custom-select" path="type.id" items="${types}"
-                                     itemLabel="name" itemValue="id"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Select Project</label>
-                        <form:select class="custom-select" path="project.id" items="${projects}"
-                                     itemLabel="name" itemValue="id"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Select Status</label>
-                        <form:select class="custom-select" path="status.id" items="${statuses}"
-                                     itemLabel="name" itemValue="id"/>
-                    </div>
-
-
-                    <button type="submit" class="btn btn-primary">Add Ticket</button>
-                </form:form>
+                <!-- 404 Error Text -->
+                <div class="text-center">
+                    <div class="error mx-auto" data-text="404">404</div>
+                    <p class="lead text-gray-800 mb-5">Page Not Found</p>
+                    <p class="text-gray-500 mb-0">You might have just got acces denied!</p>
+                    <a href="/">&larr; Back to Dashboard</a>
+                </div>
 
             </div>
             <!-- /.container-fluid -->
@@ -126,10 +98,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <form action="<c:url value="/logout"/>" method="post">
-                    <input class="btn btn-primary" type="submit" value="Logout">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                </form>
+                <a class="btn btn-primary" href="login.html">Logout</a>
             </div>
         </div>
     </div>

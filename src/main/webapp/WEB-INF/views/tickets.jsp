@@ -56,7 +56,7 @@
                                 <tr>
                                     <th>Ticket Name</th>
                                     <th>Project Name</th>
-<%--                                    <th>Developer Assigned</th>--%>
+                                    <th>Developer Assigned</th>
                                     <th>Ticket Priority</th>
                                     <th>Ticket Status</th>
                                     <th>Ticket Type</th>
@@ -69,7 +69,7 @@
                                 <tr>
                                     <th>Ticket Name</th>
                                     <th>Project Name</th>
-<%--                                    <th>Developer Assigned</th>--%>
+                                    <th>Developer Assigned</th>
                                     <th>Ticket Priority</th>
                                     <th>Ticket Status</th>
                                     <th>Ticket Type</th>
@@ -82,7 +82,7 @@
                                     <tr>
                                         <td>${ticket.title}</td>
                                         <td>${ticket.project.name}</td>
-<%--                                        TODO ASSIGNED DEVELOPER--%>
+                                        <td>${ticket.assigned.username}</td>
                                         <td>${ticket.priority.name}</td>
                                         <td>${ticket.status.name}</td>
                                         <td>${ticket.type.name}</td>

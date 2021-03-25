@@ -137,8 +137,12 @@ public class TicketController {
 
     }
     @PostMapping("/tickets/update")
-    private String updateExistingTicket(@AuthenticationPrincipal UserDetails customUser, @Valid @ModelAttribute("ticket")Ticket ticket, BindingResult result){
+    private String updateExistingTicket(Model model, @AuthenticationPrincipal UserDetails customUser, @Valid @ModelAttribute("ticket")Ticket ticket, BindingResult result){
         if (result.hasErrors()) {
+            model.addAttribute("priorities", priorityRepository.findAll());
+            model.addAttribute("types", typeRepository.findAll());
+            model.addAttribute("projects", projectRepository.findAll());
+            model.addAttribute("statuses", statusRepository.findAll());
             return "ticketEdit";
         }
 
@@ -152,8 +156,12 @@ public class TicketController {
 
 
     @PostMapping("/tickets/add")
-    private String updateTicket(@AuthenticationPrincipal UserDetails customUser, @Valid @ModelAttribute("ticket")Ticket ticket, BindingResult result){
+    private String updateTicket(Model model, @AuthenticationPrincipal UserDetails customUser, @Valid @ModelAttribute("ticket")Ticket ticket, BindingResult result){
         if (result.hasErrors()) {
+            model.addAttribute("priorities", priorityRepository.findAll());
+            model.addAttribute("types", typeRepository.findAll());
+            model.addAttribute("projects", projectRepository.findAll());
+            model.addAttribute("statuses", statusRepository.findAll());
             return "ticketform";
         }
 
