@@ -59,7 +59,7 @@ public class TicketController {
         model.addAttribute("ticket", new Ticket());
         return "ticketform";
     }
-
+// TODO do poprawy (mechanizm refleksji), porównanie dwóch obiektów
     private void updateHistory(Ticket ticket ,UserDetails customUser){
         Ticket ticketOld = ticketRepository.findById(ticket.getId()).get();
         boolean updated = false;
