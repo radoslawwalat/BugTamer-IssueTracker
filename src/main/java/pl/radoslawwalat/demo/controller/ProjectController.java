@@ -28,22 +28,22 @@ public class ProjectController {
         List<Project> projects = projectRepository.findAll();
         model.addAttribute("projects", projects);
 
-        return "projects";
+        return "projects/projects";
     }
 
     @GetMapping("/projects/add")
     public String addProject(Model model){
         model.addAttribute("project", new Project());
-        return "projectform";
+        return "projects/projectform";
     }
 
     @PostMapping("/projects/add")
     public String performAddProject(@Valid @ModelAttribute("project")Project project, BindingResult result){
         if (result.hasErrors()) {
-            return "projectform";
+            return "projects/projectform";
         }
         projectRepository.save(project);
-        return "redirect:/projects";
+        return "projects/projects";
     }
 
     @GetMapping("/projects/details/{id}")
@@ -59,6 +59,6 @@ public class ProjectController {
     @GetMapping("/projects/delete/{id}")
     private String deleteProject(@PathVariable long id){
         projectRepository.deleteById(id);
-        return "redirect:/projects";
+        return "projects/projects";
     }
 }

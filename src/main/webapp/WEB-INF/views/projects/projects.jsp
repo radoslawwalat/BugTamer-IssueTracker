@@ -1,9 +1,14 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: radek
+  Date: 15/03/2021
+  Time: 11:30
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form"
-           uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     <meta charset="utf-8">
@@ -12,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Project Details</title>
+    <title>SB Admin 2 - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="<c:url value="/resources/vendor/fontawesome-free/css/all.min.css"/>" rel="stylesheet" type="text/css">
@@ -22,16 +27,16 @@
 
     <!-- Custom styles for this template-->
     <link href="<c:url value="/resources/css/sb-admin-2.min.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/vendor/datatables/dataTables.bootstrap4.min.css"/>" rel="stylesheet">
 
 </head>
-
 <body id="page-top">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <jsp:include page="sidebar.jsp"/>
+    <jsp:include page="../sidebar.jsp"/>
+    <!-- Custom styles for this page -->
+    <link href="<c:url value="/resources/vendor/datatables/dataTables.bootstrap4.min.css"/>" rel="stylesheet">
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -39,79 +44,70 @@
         <!-- Main Content -->
         <div id="content">
 
-            <jsp:include page="topbar.jsp"/>
+            <jsp:include page="../topbar.jsp"/>
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Menage User Roles</h1>
+                <h1 class="h3 mb-2 text-gray-800">Projects</h1>
+                <a href="/projects/add" class="btn btn-primary btn-icon-split btn-lg">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-flag"></i>
+                                        </span>
+                    <span class="text">Add Project</span>
+                </a>
                 </div>
-
-                <div class="row align-items-center">
-
-                    <div class="col-6 col-md-4">
-
-                        <!-- Basic Card Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Assign a role to user</h6>
-                            </div>
-                            <div class="card-body">
-                                <form:form method="post" modelAttribute="admin">
-                                    <div class="form-group">
-                                    <h6 class="m-0 font-weight-bold text-primary">Select User</h6>
-                                <form:select class="custom-select" size="4" path="id" items="${admins}"
-                                             itemLabel="username" itemValue="id"/>
-                                    </div>
-                                    <div class="form-group">
-                                    <h6 class="m-0 font-weight-bold text-primary">Select Role</h6>
-                                <form:select class="custom-select" size="4" path="role.id" items="${roles}"
-                                             itemLabel="display" itemValue="id"/>
-                                    </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-
-                                </form:form>
-
-                            </div>
-                        </div>
-
+                <!-- DataTales Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Your Projects</h6>
                     </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
 
-                    <div class="col-12 col-sm-6 col-md-8">
-                        <!-- Default Card Example -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">All Users</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                        <tr>
-                                            <th>Username</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
+                                </tr>
+                                </thead>
+                                <tfoot>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </tfoot>
+                                <tbody>
+                                <c:forEach items="${projects}" var="project">
+                                    <tr>
+                                        <td>${project.name}</td>
+                                        <td> ${project.description}</td>
+                                        <td>
+                                            <a href="/projects/details/${project.id}" class="btn btn-info btn-icon-split">
+                                            <span class="icon text-white-50">
+                                                <i class="fas fa-info-circle"></i>
+                                            </span>
+                                                <span class="text">Details</span>
+                                            </a>
+                                            <a href="/projects/delete/${project.id}" class="btn btn-danger btn-icon-split">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-trash"></i>
+                                        </span>
+                                                <span class="text">Delete Project</span>
+                                            </a>
+                                        </td>
 
-                                        </tr>
-                                        </thead>
-
-                                        <tbody>
-                                        <c:forEach items="${admins}" var="admin">
-                                            <tr>
-                                                <td>${admin.username}</td>
-                                                <td> ${admin.email}</td>
-                                                <td> ${admin.role.name}</td>
-                                            </tr>
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
                 </div>
 
             </div>
@@ -124,7 +120,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
+                    <span>Copyright &copy; BugTamer 2021</span>
                 </div>
             </div>
         </footer>
@@ -163,7 +159,6 @@
         </div>
     </div>
 </div>
-
 <!-- Bootstrap core JavaScript-->
 <script src="<c:url value="/resources/vendor/jquery/jquery.min.js"/>"></script>
 <script src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"/>"></script>
@@ -173,7 +168,6 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<c:url value="/resources/js/sb-admin-2.min.js"/>"></script>
-
 
 <!-- Page level plugins -->
 <script src="<c:url value="/resources/vendor/datatables/jquery.dataTables.min.js"/>"></script>

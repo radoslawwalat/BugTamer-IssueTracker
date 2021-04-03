@@ -46,7 +46,7 @@ public class TicketController {
     private String listTickets(Model model){
         List<Ticket> tickets = ticketRepository.findAll();
         model.addAttribute("tickets", tickets);
-        return "tickets";
+        return "tickets/tickets";
     }
 
     @GetMapping("/tickets/add")
@@ -57,7 +57,7 @@ public class TicketController {
         model.addAttribute("projects", projectRepository.findAll());
         model.addAttribute("statuses", statusRepository.findAll());
         model.addAttribute("ticket", new Ticket());
-        return "ticketform";
+        return "tickets/ticketform";
     }
 // TODO do poprawy (mechanizm refleksji), porównanie dwóch obiektów
     private void updateHistory(Ticket ticket ,UserDetails customUser){
@@ -143,7 +143,7 @@ public class TicketController {
             model.addAttribute("types", typeRepository.findAll());
             model.addAttribute("projects", projectRepository.findAll());
             model.addAttribute("statuses", statusRepository.findAll());
-            return "ticketEdit";
+            return "tickets/ticketEdit";
         }
 
             updateHistory(ticket, customUser);
@@ -151,7 +151,7 @@ public class TicketController {
 
         ticketRepository.save(ticket);
 
-        return "redirect:/tickets";
+        return "tickets/tickets";
     }
 
 
@@ -162,7 +162,7 @@ public class TicketController {
             model.addAttribute("types", typeRepository.findAll());
             model.addAttribute("projects", projectRepository.findAll());
             model.addAttribute("statuses", statusRepository.findAll());
-            return "ticketform";
+            return "tickets/ticketform";
         }
 
         ticket.setCreated(LocalDateTime.now());
@@ -170,7 +170,7 @@ public class TicketController {
 
         ticketRepository.save(ticket);
 
-        return "redirect:/tickets";
+        return "tickets/tickets";
     }
 
     @GetMapping("/tickets/details/{id}")
@@ -178,13 +178,13 @@ public class TicketController {
 
         model.addAttribute("comment", new Comment());
         model.addAttribute("ticket", ticketRepository.findById(id).get());
-        return "ticketDetails";
+        return "tickets/ticketDetails";
     }
 
     @GetMapping("/tickets/delete/{id}")
     private String deleteTicket(@PathVariable long id){
         ticketRepository.deleteById(id);
-        return "redirect:/tickets";
+        return "tickets/tickets";
     }
 
     @GetMapping("/tickets/edit/{id}")
@@ -195,7 +195,7 @@ public class TicketController {
         model.addAttribute("projects", projectRepository.findAll());
         model.addAttribute("statuses", statusRepository.findAll());
         model.addAttribute("ticket", ticketRepository.findById(id).get());
-        return "ticketEdit";
+        return "tickets/ticketEdit";
     }
 
     @GetMapping("/tickets/pickup/{ticketid}")

@@ -1,7 +1,6 @@
 package pl.radoslawwalat.demo.controller;
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,7 +44,7 @@ public class AdminController {
         model.addAttribute("admins", adminRepository.findAll());
         model.addAttribute("admin", new Admin());
 
-        return "roles";
+        return "adminRoleOnly/roles";
     }
     @PostMapping("/manage/roles")
     public String rolesAdd(Admin admin){
@@ -64,7 +63,7 @@ public class AdminController {
         model.addAttribute("admins", adminRepository.findAll());
         model.addAttribute("projects", projectRepository.findAll());
 
-        return "assignProject";
+        return "adminRoleOnly/assignProject";
 
     }
     @PostMapping("/manage/projects")
@@ -79,7 +78,7 @@ public class AdminController {
 
         adminRepository.save(adminToSave);
 
-        return "redirect:/projects";
+        return "projects/projects";
 
     }
 
