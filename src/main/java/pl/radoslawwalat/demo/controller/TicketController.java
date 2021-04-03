@@ -151,7 +151,7 @@ public class TicketController {
 
         ticketRepository.save(ticket);
 
-        return "tickets/tickets";
+        return "redirect:/tickets";
     }
 
 
@@ -184,7 +184,7 @@ public class TicketController {
     @GetMapping("/tickets/delete/{id}")
     private String deleteTicket(@PathVariable long id){
         ticketRepository.deleteById(id);
-        return "tickets/tickets";
+        return "redirect:/tickets";
     }
 
     @GetMapping("/tickets/edit/{id}")

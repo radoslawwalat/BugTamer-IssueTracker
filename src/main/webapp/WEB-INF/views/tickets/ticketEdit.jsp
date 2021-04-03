@@ -50,6 +50,7 @@
                     <form:hidden path="id"/>
                     <form:hidden path="created"/>
                     <form:hidden path="submitter"/>
+                    <form:hidden path="assigned"/>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Ticket Title</label>
                         <form:input class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="enter title" path="title"/>
