@@ -11,5 +11,8 @@ public class HomeController {
         return "hello";
     }
 
+    @RequestMapping("/dashboard")
+    public String dashboard(){ return "dashboard";}
+
 
 }

@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/manage/**").hasAnyRole("ADMIN")
                 .antMatchers("/projects/**").hasAnyRole("USER", "ADMIN")
                 .antMatchers("/tickets/**").hasAnyRole("USER", "ADMIN")
-                .and().formLogin().loginPage("/login")
+                .and().formLogin().loginPage("/login").defaultSuccessUrl("/projects", true)
                 .and().logout().logoutSuccessUrl("/")
                 .permitAll()
                 .and().exceptionHandling().accessDeniedPage("/404");
