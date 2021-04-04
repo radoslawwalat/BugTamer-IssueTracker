@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -33,6 +34,7 @@
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#me">Developer</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login">Login</a></li>
             </ul>
         </div>
     </div>
@@ -40,42 +42,42 @@
 <!-- Masthead-->
 <header class="masthead">
     <div class="container">
-        <div class="masthead-subheading">Welcome To Our Studio!</div>
-        <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Tell Me More</a>
+        <div class="masthead-subheading">Welcome To My "Issue Tracker" Project</div>
+        <div class="masthead-heading text-uppercase">Give it a try!</div>
+        <a class="btn btn-primary btn-xl text-uppercase" href="/signup">Create an account</a>
     </div>
 </header>
 <!-- Services-->
 <section class="page-section" id="services">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Services</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">What is it about?</h2>
+            <h3 class="section-subheading text-muted">BugTamer is an issue & project tracking tool to help you develop projects flawlessly!</h3>
         </div>
         <div class="row text-center">
             <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-align-left fa-stack-1x fa-inverse"></i>
                         </span>
-                <h4 class="my-3">E-Commerce</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <h4 class="my-3">Issue Tracking</h4>
+                <p class="text-muted">Using my app you can easily create tickets and see their details clearly. Adding comments and history tracking is implemented!</p>
             </div>
             <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
                             <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
                         </span>
-                <h4 class="my-3">Responsive Design</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <h4 class="my-3">Project Development</h4>
+                <p class="text-muted">Creating project schemas and assigning users is helpful on a development path. You can track particular tickets for your project dynamicly. </p>
             </div>
             <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
+                            <i class="fas fa-address-card fa-stack-1x fa-inverse"></i>
                         </span>
-                <h4 class="my-3">Web Security</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <h4 class="my-3">Users Management</h4>
+                <p class="text-muted">As an administrator you can change user roles and assign them to particular projects.</p>
             </div>
         </div>
     </div>
@@ -84,8 +86,8 @@
 <section class="page-section bg-light" id="portfolio">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Portfolio</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">Check out my other projects!</h2>
+            <h3 class="section-subheading text-muted">There are more to come!</h3>
         </div>
         <div class="row">
             <div class="col-lg-4 col-sm-6 mb-4">
@@ -97,39 +99,39 @@
                         <img class="img-fluid" src="<c:url value="/resources/assets/img/portfolio/01-thumbnail.jpg"/>" alt="" />
                     </a>
                     <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">Threads</div>
-                        <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                        <div class="portfolio-caption-heading">BugTamer</div>
+                        <div class="portfolio-caption-subheading text-muted">Issue tracking & project development tool</div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="<c:url value="/resources/assets/img/portfolio/02-thumbnail.jpg"/>" alt="" />
-                    </a>
-                    <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">Explore</div>
-                        <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="portfolio-item">
-                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                        </div>
-                        <img class="img-fluid" src="<c:url value="/resources/assets/img/portfolio/03-thumbnail.jpg"/>" alt="" />
-                    </a>
-                    <div class="portfolio-caption">
-                        <div class="portfolio-caption-heading">Finish</div>
-                        <div class="portfolio-caption-subheading text-muted">Identity</div>
-                    </div>
-                </div>
-            </div>
+<%--            <div class="col-lg-4 col-sm-6 mb-4">--%>
+<%--                <div class="portfolio-item">--%>
+<%--                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">--%>
+<%--                        <div class="portfolio-hover">--%>
+<%--                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>--%>
+<%--                        </div>--%>
+<%--                        <img class="img-fluid" src="<c:url value="/resources/assets/img/portfolio/02-thumbnail.jpg"/>" alt="" />--%>
+<%--                    </a>--%>
+<%--                    <div class="portfolio-caption">--%>
+<%--                        <div class="portfolio-caption-heading">Explore</div>--%>
+<%--                        <div class="portfolio-caption-subheading text-muted">Graphic Design</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="col-lg-4 col-sm-6 mb-4">--%>
+<%--                <div class="portfolio-item">--%>
+<%--                    <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">--%>
+<%--                        <div class="portfolio-hover">--%>
+<%--                            <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>--%>
+<%--                        </div>--%>
+<%--                        <img class="img-fluid" src="<c:url value="/resources/assets/img/portfolio/03-thumbnail.jpg"/>" alt="" />--%>
+<%--                    </a>--%>
+<%--                    <div class="portfolio-caption">--%>
+<%--                        <div class="portfolio-caption-heading">Finish</div>--%>
+<%--                        <div class="portfolio-caption-subheading text-muted">Identity</div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
         </div>
     </div>
 </section>
@@ -137,8 +139,7 @@
 <section class="page-section bg-light" id="me">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">Developer</h2>
         </div>
         <div class="row">
             <div class="col-lg-4">
@@ -146,8 +147,8 @@
             <div class="col-lg-4">
                 <div class="team-member">
                     <img class="mx-auto rounded-circle" src="<c:url value="/resources/assets/img/team/2.jpg"/>" alt="" />
-                    <h4>Larry Parker</h4>
-                    <p class="text-muted">Lead Marketer</p>
+                    <h4>Radosław Walat</h4>
+                    <p class="text-muted">Developer</p>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
@@ -157,7 +158,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Right now I work on my own and I would love to add you to this section! Let me know if you're down to join me on my development journey.</p></div>
         </div>
     </div>
 </section>
@@ -184,8 +185,7 @@
 <section class="page-section" id="contact">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">Contact Us</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">Contact Me!</h2>
         </div>
         <form id="contactForm" name="sentMessage" novalidate="novalidate">
             <div class="row align-items-stretch mb-5">
