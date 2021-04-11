@@ -22,6 +22,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public SpringDataAdminDetailsService customUserDetailsService() {
         return new SpringDataAdminDetailsService();
     }
+
     @Override
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
