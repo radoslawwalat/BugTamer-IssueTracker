@@ -46,7 +46,7 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Menage User Projects</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Manage User Projects</h1>
                 </div>
 
                 <div class="row align-items-center">
