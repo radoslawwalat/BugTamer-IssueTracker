@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db1:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin123
+      - MYSQL_USER=testuser
+      - MYSQL_PASSWORD=testuser@123
+      - MYSQL_DATABASE=bugtamerdb
+    ports:
+    - 3306:3306
+  bugtamer-docker:
+    image: springboot-docker-container
+    ports:
+      - 8082:8080
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - db1
+    environment:
+      - DATABASE_HOST=db1
+      - DATABASE_USER=testuser
+      - DATABASE_PASSWORD=testuser@123
+      - DATABASE_NAME=bugtamerdb
+      - DATABASE_PORT=3306
+
+
+
+
