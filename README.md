@@ -1,7 +1,7 @@
 # BugTamer
 Issue &amp; Project tracking software.
 
-This is the first project I debeloped entirely on my own. It allows users to create accounts, add projects and tickets to projects, add comments to tickets and track ticket's changes. It helps grately with development process.
+This is the first project I developed entirely on my own. It allows users to create accounts, add projects and tickets to projects, add comments to tickets and track ticket's changes. It helps grately with development process.
 
 Main technologies: Bootstrap, Spring (Boot, Mvc, Data, Security, Validation, Form), JSP, JSTL, Lombok, Hibernate, MySQL.
 
